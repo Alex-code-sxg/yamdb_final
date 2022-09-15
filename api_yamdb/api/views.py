@@ -1,18 +1,18 @@
-from django.shortcuts import get_object_or_404
-from rest_framework import viewsets
-from django_filters.rest_framework import DjangoFilterBackend
-from .serializers import (CategorySerializer, GenreSerializer,
-                          TitleSerializer, TitleCreateSerializer,
-                          ReviewSerializer, CommentSerializer)
-from rest_framework.mixins import (CreateModelMixin, ListModelMixin,
-                                   DestroyModelMixin)
-from reviews.models import Title, Genre, Category, Review
-from .permissions import (IsAdminOrReadOnly,
-                          IsAdminOrModeratorOrAuthorOrReadOnly)
-from .filters import TitleFilter
-from rest_framework import filters
-from rest_framework.pagination import LimitOffsetPagination
 from django.db.models import Avg
+from django.shortcuts import get_object_or_404
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import filters, viewsets
+from rest_framework.mixins import (CreateModelMixin, DestroyModelMixin,
+                                   ListModelMixin)
+from rest_framework.pagination import LimitOffsetPagination
+from reviews.models import Category, Genre, Review, Title
+
+from .filters import TitleFilter
+from .permissions import (IsAdminOrModeratorOrAuthorOrReadOnly,
+                          IsAdminOrReadOnly)
+from .serializers import (CategorySerializer, CommentSerializer,
+                          GenreSerializer, ReviewSerializer,
+                          TitleCreateSerializer, TitleSerializer)
 
 
 class TitleViewSet(viewsets.ModelViewSet):

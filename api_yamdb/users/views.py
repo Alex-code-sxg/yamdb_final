@@ -1,20 +1,19 @@
 import uuid
-from django.shortcuts import get_object_or_404
-from rest_framework import viewsets
-from rest_framework.permissions import (AllowAny,
-                                        IsAuthenticated)
-from api.serializers import (CreateUserSerializer, LoginUserSerializer,
-                             UserSerializer, MeUserSerializer)
-from users.models import User
-from django.core.mail import send_mail
+
 from api.permissions import AdminOnly
-from rest_framework import status
+from api.serializers import (CreateUserSerializer, LoginUserSerializer,
+                             MeUserSerializer, UserSerializer)
+from django.core.mail import send_mail
+from django.shortcuts import get_object_or_404
+from rest_framework import filters, status, viewsets
+from rest_framework.decorators import action
+from rest_framework.pagination import PageNumberPagination
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework import filters
 from rest_framework_simplejwt.tokens import RefreshToken
-from rest_framework.pagination import PageNumberPagination
-from rest_framework.decorators import action
+from users.models import User
+
 from api_yamdb.settings import EMAIL_HOST_USER
 
 
