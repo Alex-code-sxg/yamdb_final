@@ -1,6 +1,6 @@
 <h1 align="left">Проект YaMDb</h1>
 
-![example workflow](https://github.com/Alex-code-sxg/infra_actions/actions/workflows/main.yml/badge.svg)
+![example workflow](https://github.com/Alex-code-sxg/yamdb_final/actions/workflows/main.yml/badge.svg)
 
 ## Общее описание:
 
@@ -23,13 +23,12 @@ docker pull alexcodesxg/api_yamdb:v1.09.2022
 
 2. Создать и заполнить .env файл (например):
 ```
-SECRET_KEY=D0fb_u6kIilA5DgHUIBjB
-DB_ENGINE=django.db.backends.postgresql
-DB_NAME=postgres
-POSTGRES_USER=postgres
-POSTGRES_PASSWORD=test1
-DB_HOST=db
-DB_PORT=5432
+SECRET_KEY=dgssdgsgsgsgs
+DB_NAME=sdsgdgdds
+POSTGRES_USER=sdg
+POSTGRES_PASSWORD=sdg
+DB_HOST=dsdgb
+DB_PORT=sddg
 ```
 
 3. Собрать контейнеры:
