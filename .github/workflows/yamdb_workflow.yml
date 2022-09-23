@@ -14,18 +14,14 @@ jobs:
 
     - name: Install dependencies
       run: | 
-        # обновление pip
         python -m pip install --upgrade pip 
-        # установка flake8 и его плагинов
         pip install flake8 pep8-naming flake8-broken-line flake8-return flake8-isort
-        # установка зависимостей
+        cd api_yamdb/
         pip install -r requirements.txt 
 
     - name: Test with flake8 and django tests
       run: |
-        # запуск проверки проекта по flake8
         python -m flake8
-        # запустить написанные разработчиком тес
         pytest
 
   build_and_push_to_docker_hub:
@@ -63,7 +59,6 @@ jobs:
         script: |
           sudo docker-compose stop
           sudo docker-compose rm web
-          sudo docker pull alexcodesxg/yamdb:latest
           touch .env
           echo DB_ENGINE=${{ secrets.DB_ENGINE }} >> .env
           echo DB_NAME=${{ secrets.DB_NAME }} >> .env
@@ -72,7 +67,6 @@ jobs:
           echo DB_HOST=${{ secrets.DB_HOST }} >> .env
           echo DB_PORT=${{ secrets.DB_PORT }} >> .env
           sudo docker-compose up -d
-
 
   send_message:
     runs-on: ubuntu-latest
